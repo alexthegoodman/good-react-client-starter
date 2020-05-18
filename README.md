@@ -6,6 +6,7 @@ Welcome
 
 `heroku login`
 `heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git`
+`heroku plugins:install heroku-cli-static`
 
 `yarn`
 `yarn dev:client`
@@ -13,4 +14,5 @@ Welcome
 ## Deploy
 
 `yarn build:client`
-`yarn heroku:deploy`
+<!-- `yarn heroku:deploy` -->
+`heroku static:deploy`
