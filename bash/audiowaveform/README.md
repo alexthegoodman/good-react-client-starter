@@ -1,0 +1,2 @@
+- see /reeviewr-data-seed/ to generate a new sql file from legacy csv files
+- or import the sql file included here on db:seed
