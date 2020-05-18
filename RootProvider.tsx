@@ -10,7 +10,7 @@ import { Router, View } from "react-navi";
 import * as Sentry from "@sentry/browser";
 import { CookiesProvider } from "react-cookie";
 import FullStory from "react-fullstory";
-import MessengerCustomerChat from "react-messenger-customer-chat";
+// import MessengerCustomerChat from "react-messenger-customer-chat";
 import whyDidYouRender from "@welldone-software/why-did-you-render";
 
 import routes from "./routes";
@@ -42,10 +42,10 @@ const RootProvider: React.FC<RootProviderProps> = (props) => {
         {process.env.NODE_ENV !== "development" ? (
           <>
             <FullStory org="KKJA5" />
-            <MessengerCustomerChat
+            {/* <MessengerCustomerChat
               pageId="431860910314038"
               appId="1534142523521486"
-            />
+            /> */}
           </>
         ) : (
           <></>

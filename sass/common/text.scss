@@ -23,6 +23,15 @@ span {
   }
 }
 
+.subHeadline {
+  font-size: 1.4rem;
+  color: $dark-gray1;
+
+  @include tabletDown {
+    font-size: 1.2rem;
+  }
+}
+
 .darkHeadline {
   color: $dark-gray1 !important;
 }
