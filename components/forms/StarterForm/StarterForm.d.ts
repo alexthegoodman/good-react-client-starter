@@ -1,10 +1,10 @@
-export interface CompleteProfileFormProps {
+export interface StarterFormProps {
   ref?: React.Ref<any>;
   className?: string;
   onClick?: (e: MouseEvent) => void;
 }
 
-export interface CompleteProfileValues {
+export interface StarterValues {
   artistName: string;
   // firstName: string;
   // lastName: string;

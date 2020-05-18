@@ -1,9 +1,7 @@
 import Cookies from "universal-cookie";
-import Utility from "../../services/Utility";
-import { USER_PRIVATE_QUERY } from "../graphql/queries/user";
+import Utility from "../services/Utility";
 import client from "./ApolloClient";
 import RestClient from "./RestClient";
-import { DELETE_POST } from "../graphql/mutations/post";
 
 export default class ItemClient {
   public restClient = new RestClient();
@@ -26,24 +24,6 @@ export default class ItemClient {
     } else {
       console.error("Only logged in users can create spaces");
       alert("Sorry! Please sign up to create items. Code 4403");
-    }
-  }
-
-  createPost(values, callback) {
-    const cookies = new Cookies();
-    const reeviewrId = cookies.get("reeviewrId");
-
-    console.info("create post", reeviewrId);
-
-    if (this.utility.isDefinedWithContent(reeviewrId)) {
-      this.restClient.makeRequest(
-        "/posts/create/",
-        { id: reeviewrId, ...values },
-        callback
-      );
-    } else {
-      console.error("Only logged in users can create posts");
-      alert("Sorry! Please sign up to create items. Code 4404");
     }
   }
 

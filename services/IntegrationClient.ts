@@ -1,4 +1,4 @@
-import Utility from "../../services/Utility";
+import Utility from "../services/Utility";
 import RestClient from "./RestClient";
 
 export default class IntegrationClient {

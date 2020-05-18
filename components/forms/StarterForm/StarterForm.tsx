@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import {
-  CompleteProfileFormProps,
-  CompleteProfileValues,
-} from "./CompleteProfileForm.d";
+  StarterFormProps,
+  StarterValues,
+} from "./StarterForm.d";
 
 import {
   Tabs,
@@ -22,13 +22,12 @@ import * as Yup from "yup";
 import TextareaField from "../../fields/TextareaField/TextareaField";
 import UploadField from "../../fields/UploadField/UploadField";
 import SelectField from "../../fields/SelectField/SelectField";
-import { Genres, GenreList } from "../../../../defs/genres";
 import CheckboxField from "../../fields/CheckboxField/CheckboxField";
 import AuthClient from "../../../services/AuthClient";
-import Utility from "../../../../services/Utility";
-import { ERROR_CODE } from "../../../../services/ERROR_CODE";
+import Utility from "../../../services/Utility";
+import { ERROR_CODE } from "../../../services/ERROR_CODE";
 
-const CompleteProfileForm: React.FC<CompleteProfileFormProps> = ({
+const StarterForm: React.FC<StarterFormProps> = ({
   ref = null,
   className = "",
   onClick = (e) => console.info("Click"),
@@ -103,7 +102,7 @@ const CompleteProfileForm: React.FC<CompleteProfileFormProps> = ({
           explicit: false,
         }}
         validationSchema={SignUpSchema}
-        onSubmit={(values: CompleteProfileValues, actions) => {
+        onSubmit={(values: StarterValues, actions) => {
           console.log("values", { values, actions });
           if (utility.isDefinedWithContent(values.profilePicture)) {
             if (
@@ -119,25 +118,25 @@ const CompleteProfileForm: React.FC<CompleteProfileFormProps> = ({
               setFileSizeError(true);
             } else {
               // console.info("success", values);
-              authClient.completeProfile(values, (err, res) => {
-                // console.info("returned", err, res);
-                if (err) {
-                  console.error(err);
-                }
-                if (res.body.success) {
-                  // redirect to Home
-                  // console.info("thank you - go home");
-                  setSuccessfulSubmission(true);
-                  window.location.href = window.location.origin;
-                }
-                actions.resetForm();
-              });
+              // authClient.Starter(values, (err, res) => {
+              //   // console.info("returned", err, res);
+              //   if (err) {
+              //     console.error(err);
+              //   }
+              //   if (res.body.success) {
+              //     // redirect to Home
+              //     // console.info("thank you - go home");
+              //     setSuccessfulSubmission(true);
+              //     window.location.href = window.location.origin;
+              //   }
+              //   actions.resetForm();
+              // });
             }
           } else {
             setFileError(true);
           }
         }}
-        render={(formikBag: FormikProps<CompleteProfileValues>) => {
+        render={(formikBag: FormikProps<StarterValues>) => {
           // console.info("formikbag", formikBag);
           const panel1 = (
             <>
@@ -172,7 +171,7 @@ const CompleteProfileForm: React.FC<CompleteProfileFormProps> = ({
                 label="Favorite Genre"
                 fieldName="favoriteGenre"
                 helperText="Pick your preferred genre"
-                options={["Select", ...GenreList]}
+                options={["Select", "Option 1", "Option 2"]}
               />
               <SelectField
                 label="Gender"
@@ -203,7 +202,7 @@ const CompleteProfileForm: React.FC<CompleteProfileFormProps> = ({
           return (
             <Form>
               <Tabs
-                id="CompleteProfileTabs"
+                id="StarterTabs"
                 onChange={handleTabChange}
                 selectedTabId={navbarTabId}
               >
@@ -218,4 +217,4 @@ const CompleteProfileForm: React.FC<CompleteProfileFormProps> = ({
   );
 };
 
-export default CompleteProfileForm;
+export default StarterForm;

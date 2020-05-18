@@ -3,8 +3,7 @@ import {
   status as statusConstants,
   state as stateConstants,
 } from "../constants";
-import Hawaii from "../services/Hawaii";
-import Oahu from "../../services/Oahu";
+import ClientServices from "../services/ClientServices";
 
 const superagent = require("superagent");
 
@@ -32,8 +31,7 @@ export const useSuperFetch = (
   customOptions = defaultOptions
 ) => {
   try {
-    const hawaii = new Hawaii();
-    const oahu = new Oahu();
+    const clientServices = new ClientServices();
     const options = { ...defaultOptions, ...customOptions };
 
     const [status, setStatus] = useState(statusConstants.NONE);
@@ -43,7 +41,7 @@ export const useSuperFetch = (
     const [data, setData] = useState(null);
 
     const doFetch = (addtParams = {}) => {
-      oahu.logs.write("SUPERFETCH INITIATE", "info", options.logging);
+      clientServices.logs.write("SUPERFETCH INITIATE", "info", options.logging);
 
       let chain;
       switch (method) {
@@ -52,7 +50,7 @@ export const useSuperFetch = (
           chain = superagent
             .post(
               options.formatEndpoint
-                ? hawaii.strings.formatUrl(endpoint)
+                ? clientServices.strings.formatUrl(endpoint)
                 : endpoint
             )
             .type("form")
@@ -63,7 +61,7 @@ export const useSuperFetch = (
           chain = superagent
             .get(
               options.formatEndpoint
-                ? hawaii.strings.formatUrl(endpoint)
+                ? clientServices.strings.formatUrl(endpoint)
                 : endpoint
             )
             .on("error", setError);
@@ -97,7 +95,7 @@ export const useSuperFetch = (
           setData(data);
           options.onFinished();
           options.onSuccess(data);
-          oahu.logs.write("SUPERFETCH SUCCESS", "info", options.logging);
+          clientServices.logs.write("SUPERFETCH SUCCESS", "info", options.logging);
         })
         .catch((error) => {
           setState(stateConstants.FINISHED);
@@ -106,7 +104,7 @@ export const useSuperFetch = (
           setError(error);
           options.onFinished();
           options.onFailure(error);
-          oahu.logs.write("SUPERFETCH FAILURE", "error", options.logging);
+          clientServices.logs.write("SUPERFETCH FAILURE", "error", options.logging);
         });
     };
 
@@ -141,7 +139,7 @@ export const useSimpleFetch = (
   fetchOnMount = true,
   formatEndpoint = true
 ) => {
-  const oahu = new Oahu();
+  const clientServices = new ClientServices();
   const [status, setStatus] = useState(statusConstants.NONE);
   const [state, setState] = useState(stateConstants.NONE);
   const [loading, setLoading] = useState(false);
@@ -171,7 +169,7 @@ export const useSimpleFetch = (
         setStatus(statusConstants.SUCCESS);
         setLoading(false);
         setData(response.json());
-        oahu.logs.write("SIMPLEFETCH SUCCESS", "info", false);
+        clientServices.logs.write("SIMPLEFETCH SUCCESS", "info", false);
       })
       .catch(function (error) {
         clearTimeout(timeout);
@@ -179,7 +177,7 @@ export const useSimpleFetch = (
         setStatus(statusConstants.FAILURE);
         setLoading(false);
         setError(error);
-        oahu.logs.write("SIMPLEFETCH FAILURE", "error", false);
+        clientServices.logs.write("SIMPLEFETCH FAILURE", "error", false);
       });
   };
 

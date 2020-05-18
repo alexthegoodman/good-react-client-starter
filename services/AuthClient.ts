@@ -1,6 +1,5 @@
 import Cookies from "universal-cookie";
-import Utility from "../../services/Utility";
-import { USER_PRIVATE_QUERY } from "../graphql/queries/user";
+import Utility from "../services/Utility";
 import client from "./ApolloClient";
 import RestClient from "./RestClient";
 
@@ -17,22 +16,22 @@ export default class AuthClient {
     console.info("reeivewr private hash", reeviewrId);
 
     if (this.utility.isDefinedWithContent(reeviewrId)) {
-      const { data: userData } = await client.query({
-        query: USER_PRIVATE_QUERY,
-        variables: { id: reeviewrId },
-      });
-      console.info("got user data", reeviewrId, userData);
-      if (userData.findOneUser !== null) {
-        dispatch({
-          type: "setUserData",
-          userData: userData.findOneUser,
-        });
-      } else {
-        dispatch({
-          type: "setUserData",
-          userData: false,
-        });
-      }
+      // const { data: userData } = await client.query({
+      //   query: USER_PRIVATE_QUERY,
+      //   variables: { id: reeviewrId },
+      // });
+      // console.info("got user data", reeviewrId, userData);
+      // if (userData.findOneUser !== null) {
+      //   dispatch({
+      //     type: "setUserData",
+      //     userData: userData.findOneUser,
+      //   });
+      // } else {
+      //   dispatch({
+      //     type: "setUserData",
+      //     userData: false,
+      //   });
+      // }
     } else {
       dispatch({
         type: "setUserData",

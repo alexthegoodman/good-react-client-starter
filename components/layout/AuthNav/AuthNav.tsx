@@ -3,7 +3,6 @@ import * as React from "react";
 import { Button } from "@blueprintjs/core";
 import { useCurrentRoute, useLoadingRoute, useNavigation } from "react-navi";
 import { useAppContext } from "../../../context";
-import Header from "../../navigation/Header/Header";
 import App from "../App/App";
 import { AuthNavProps } from "./AuthNav.d";
 
@@ -16,35 +15,6 @@ const AuthNav: React.FC<AuthNavProps> = ({ children }) => {
 
   return (
     <App>
-      <Header
-        className="noLogo"
-        leftElements={
-          <>
-            <Button
-              className="textButton headerItem"
-              minimal={true}
-              onClick={() => navigation.navigate("/")}
-            >
-              Back to Home
-            </Button>
-            <Button
-              className="textButton headerItem"
-              minimal={true}
-              onClick={() => navigation.navigate("/login")}
-            >
-              Login
-            </Button>
-            <Button
-              className="textButton headerItem"
-              minimal={true}
-              onClick={() => navigation.navigate("/sign-up")}
-            >
-              Sign Up
-            </Button>
-          </>
-        }
-        rightElements={<></>}
-      />
       <section
         style={{
           paddingLeft: 25,

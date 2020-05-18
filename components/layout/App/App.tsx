@@ -1,15 +1,14 @@
 import * as React from "react";
-import { hot } from "react-hot-loader/root";
+// import { hot } from "react-hot-loader/root";
 
 import { useCookies } from "react-cookie";
 import { useCurrentRoute, useNavigation } from "react-navi";
-import Utility from "../../../../services/Utility";
+import Utility from "../../../services/Utility";
 import { useAppContext } from "../../../context";
 import AuthClient from "../../../services/AuthClient";
 import LoadingIndicator from "../../system/LoadingIndicator/LoadingIndicator";
 import { AppProps } from "./App.d";
 import { useQuery } from "react-apollo";
-import { GET_NOTIFICATIONS } from "../../../graphql/queries/notification";
 
 const App: React.FC<AppProps> = ({ children }) => {
   const authClient = new AuthClient();
@@ -19,28 +18,28 @@ const App: React.FC<AppProps> = ({ children }) => {
   const route = useCurrentRoute();
   const navigation = useNavigation();
 
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "reeviewrId",
-    "reeviewrDarkMode",
-  ]);
+  // const [cookies, setCookie, removeCookie] = useCookies([
+  //   "reeviewrId",
+  //   "reeviewrDarkMode",
+  // ]);
 
   // Global Loading
   // Will users who are logged in be shown a loading symbol on SSR (with JS disabled)?
-  if (
-    userData === null &&
-    utility.isDefinedWithContent(cookies["reeviewrId"])
-  ) {
-    // if reeviewrId belongs to no user, infinite loop occurs
-    authClient.getUserData(dispatch);
+  // if (
+  //   userData === null &&
+  //   utility.isDefinedWithContent(cookies["reeviewrId"])
+  // ) {
+  //   // if reeviewrId belongs to no user, infinite loop occurs
+  //   authClient.getUserData(dispatch);
 
-    console.info("user data", userData);
+  //   console.info("user data", userData);
 
-    return (
-      <>
-        <LoadingIndicator loadingText="Loading user data..." />
-      </>
-    );
-  }
+  //   return (
+  //     <>
+  //       <LoadingIndicator loadingText="Loading user data..." />
+  //     </>
+  //   );
+  // }
 
   // Global Redirects
   // if (

@@ -1,6 +1,6 @@
-export interface LoginProps {}
+export interface HomeProps {}
 
-export interface LoginFormValues {
+export interface HomeFormValues {
   email: string;
   password: string;
 }
