@@ -1,4 +1,4 @@
-# Good React Client Starter (2019)
+# Good React Client Starter
 
 Welcome
 
@@ -9,6 +9,12 @@ Copy `.env.example` to `.env`
 `yarn`
 `yarn dev:client`
 
+## Test
+
+Start the client first
+
+`yarn test:integration` launches Cypress
+
 ## Deploy
 
 `heroku login`
@@ -16,7 +22,9 @@ Copy `.env.example` to `.env`
 `heroku plugins:install heroku-cli-static`
 
 `yarn build:client`
+
 <!-- `yarn heroku:deploy` -->
+
 `heroku static:deploy`
 
 ## Todo

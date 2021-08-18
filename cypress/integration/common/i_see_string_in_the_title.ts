@@ -2,6 +2,10 @@
 
 import { Given, Then, When } from "cypress-cucumber-preprocessor/steps";
 
-Then(`I see {string} in the title`, title => {
-  cy.title().should("include", title);
+When(`I paste into the editor {string}`, title => {
+  cy.get("body").should("be.visible");
+});
+
+Then(`the editor content should be {string}`, title => {
+  cy.get("body").should("be.visible");
 });
