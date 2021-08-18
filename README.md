@@ -18,3 +18,7 @@ Copy `.env.example` to `.env`
 `yarn build:client`
 <!-- `yarn heroku:deploy` -->
 `heroku static:deploy`
+
+## Todo
+
+- Remove unused dependencies

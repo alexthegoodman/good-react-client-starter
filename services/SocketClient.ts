@@ -1,4 +1,4 @@
-import * as io from "socket.io-client";
+// import * as io from "socket.io-client";
 
 // this class initiates the single connection used within all components
 // which allows socket.emit('v1.0.0/io emit() and on() to be bundled where they belong

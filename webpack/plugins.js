@@ -2,15 +2,15 @@ const webpack = require("webpack");
 const os = require("os");
 const config = require("config");
 
-const IconFontPlugin = require("icon-font-loader").Plugin;
+// const IconFontPlugin = require("icon-font-loader").Plugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const HappyPack = require("happypack");
-var ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+// const HappyPack = require("happypack");
+// var ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+// const CopyPlugin = require("copy-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
 // per-environment plugins
@@ -38,9 +38,7 @@ const environmentPlugins = (() => {
 })();
 
 module.exports = {
-  default: [
-
-  ],
+  default: [],
   client: [
     // clean-webpack-plugin to clean /dist/ every build
     // TODO better than EnvironmentPlugin and DefinePlugin?
@@ -65,7 +63,6 @@ module.exports = {
 
       // ALlow switching on NODE_ENV in client code
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-
 
       "process.env.PRISMA_API": JSON.stringify(process.env.PRISMA_API),
 
@@ -151,7 +148,7 @@ module.exports = {
     // new IconFontPlugin(),
 
     ...(process.env.ANALYZE
-      ? [new (require("webpack-bundle-analyzer").BundleAnalyzerPlugin)()]
+      ? [new (require("webpack-bundle-analyzer")).BundleAnalyzerPlugin()]
       : []),
   ].concat(environmentPlugins),
-}
+};
