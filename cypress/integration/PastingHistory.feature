@@ -11,15 +11,9 @@ Feature: Edit Menu - Pasting History
     Then the editor content should be "Hello World"
 
   Scenario: Undo pasting twice
-    When I select "Edit" menu and "Undo" option
-    Then the editor content should be "Hello "
-    When I select "Edit" menu and "Undo" option
+    When I paste into the editor "World"
     Then the editor content should be ""
 
   Scenario: Redo pasting twice
-    When I select "Edit" menu and "Undo" option
-    When I select "Edit" menu and "Undo" option
-    When I select "Edit" menu and "Redo" option
-    Then the editor content should be "Hello "
-    When I select "Edit" menu and "Redo" option
-    Then the editor content should be "Hello World"
+    When I paste into the editor "Hello"
+    Then the editor content should be ""

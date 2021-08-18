@@ -13,7 +13,9 @@ Copy `.env.example` to `.env`
 
 Start the client first
 
-`yarn test:integration` launches Cypress
+`yarn test:integration` runs Cypress tests
+
+`yarn cypress open` opens Cypress UI
 
 ## Deploy
 
