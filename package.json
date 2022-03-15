@@ -89,7 +89,7 @@
     "jest-junit": "10.0.0",
     "jest-transform-graphql": "2.1.0",
     "jquery": "3.5.1",
-    "lodash-es": "4.17.15",
+    "lodash-es": "4.17.21",
     "lodash.groupby": "4.6.0",
     "lodash.keyby": "4.6.0",
     "lorem-ipsum": "2.0.3",
